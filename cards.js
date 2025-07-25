@@ -105,7 +105,7 @@ for (let i = 0; i < cardsArray.length; i++) {
   const element = cardsArray[i];
   cards.innerHTML += `
 <div
-            class="w-60 rounded-xl bg-[#fef8f5] shadow-md p-3 font-sans lg:hover:shadow-lg transition"
+            class=" rounded-xl bg-[#fef8f5] shadow-md p-3 font-sans lg:hover:shadow-lg transition"
           >
             <div class="rounded-xl overflow-hidden">
               <img
