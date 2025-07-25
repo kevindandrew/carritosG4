@@ -112,9 +112,9 @@ for (let i = 0; i < cardsArray.length; i++) {
           class="w-full h-auto"
         />
       </div>
-      <div class="-mt-5 flex justify-center z-10">
+      <div class="-mt-5 flex justify-center items-center z-10 dad-btn">
         <button
-          class="bg-white text-[#ec6d47] border border-[#ec6d47] px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-[#fff2ee] transition flex items-center gap-2 shadow-md"
+          class="btn bg-white text-[#ec6d47]  px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-[#fff2ee] transition flex items-center gap-2 shadow-md"
         >
           <img
             src="./assets/images/icon-add-to-cart.svg"
@@ -126,7 +126,30 @@ for (let i = 0; i < cardsArray.length; i++) {
       </div>
       <p class="mt-4 text-xs text-gray-500">${item.category}</p>
       <p class="text-sm font-semibold text-gray-800">${item.name}</p>
-      <p class="text-[15px] font-bold text-[#ea6950]">$${item.price.toFixed(2)}</p>
+      <p class="text-[15px] font-bold text-[#ea6950]">$${item.price.toFixed(
+        2
+      )}</p>
     </div>
   `;
 }
+
+cards.addEventListener("click", function (e) {
+  if (e.target.closest(".btn")) {
+    e.target.closest(".btn").classList.add("border-2", "border-[#c83b0e]");
+    let botoncito = e.target.closest(".btn");
+    let papa = e.target.closest(".dad-btn");
+    let tio = papa.previousElementSibling;
+    tio.classList.add("border-2", "border-[#c83b0e]");
+    papa.innerHTML = `
+    <div class="bg-red-800 flex gap-8 rounded-2xl items-center justify-center  px-4 py-1.5">
+        <button>
+          <img src="./assets/images/icon-decrement-quantity.svg" alt="" class="size-4 border border-white rounded-full p-0.5"/>
+        </button>
+        <p class="text-white">1</p>
+        <button>
+          <img src="./assets/images/icon-increment-quantity.svg" alt="" class="size-4 border border-white rounded-full p-0.5" />
+        </button>
+    </div>
+    `;
+  }
+});
