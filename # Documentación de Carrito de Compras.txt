@@ -1,0 +1,48 @@
+# Documentación de Carrito de Compras
+
+## Índice
+1. [Variables Globales](#variables-globales)
+2. [Funciones Principales](#funciones-principales)
+3. [Event Listeners](#event-listeners)
+4. [Implementación](#implementación)
+
+## Variables Globales
+
+```javascript
+const contenedorTarjetas = document.getElementById("tarjetas");
+const contenedorElementosCarrito = document.querySelector(".elementos-carrito");
+const cantidadCarrito = document.querySelector(".cantidad-carrito");
+const totalCarrito = document.querySelector(".total-carrito");
+const carrito = {};
+```
+
+## Funciones Principales
+
+### crearContador()
+```javascript
+function crearContador(nombre, cantidad) {
+  return `<div>...</div>`;
+}
+```
+
+### actualizarCarrito()
+```javascript
+function actualizarCarrito() {
+  // Lógica de actualización
+}
+```
+
+## Event Listeners
+
+```javascript
+document.body.addEventListener("click", (e) => {
+  // Event delegation pattern
+});
+```
+
+## Implementación en Otros Proyectos
+
+1. **Paso 1**: Estructura HTML
+2. **Paso 2**: Variables
+3. **Paso 3**: Funciones
+4. **Paso 4**: Eventos

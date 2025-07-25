@@ -246,3 +246,121 @@ document.body.addEventListener("click", (e) => {
     }
   }
 });
+
+function abrirModal() {
+  const confirmarPedido = document.querySelector("#confirmar-pedido");
+
+  if (!confirmarPedido) {
+    console.error("No se encontró el botón #confirmar-pedido");
+    return;
+  }
+
+  confirmarPedido.addEventListener("click", () => {
+    
+    if (document.querySelector(".modal-overlay")) {
+      return;
+    }
+
+    const modalHTML = `
+      <div class="modal-overlay fixed inset-0 bg-gray bg-opacity-40 flex items-center justify-center z-50">
+        <div class="contenedor-carrito w-full max-w-md mx-4">
+       
+        <div class="bg-white rounded-xl shadow-md p-6 w-full">
+              <button class="cerrar-modal  text-white w-full mt-2 py-2 rounded-md ">
+                <img src="./assets/images/icon-order-confirmed.svg" class="size-8">
+              </button>
+              <h2 class="text-4xl font-bold text-black mb-4">
+                Order Confirmed
+              </h2>
+              <p class="text-orange-900 text mt-4">
+              ¡Esperamos que hayas disfrutado la comida!
+              </p>
+              
+              <div class="elementos-carrito-modal bg-[#fcf8f5] rounded-xl p-4 mt-4">
+                <p class=" text-gray-500 text-sm text-center ">Agregar productos</p>
+              </div>
+              
+              <p class="text-gray-700 font-bold text-right  flex justify-between bg-[#fcf8f5] mt-0 h-10">
+                Total <span class="total-carrito-modal">$0.00</span>
+              </p>
+              <button class="confirmar-pedido-final bg-[#ea6950] text-white w-full mt-4 py-2 rounded-full hover:bg-[#d85a3f] transition">
+                Empezar nueva orden
+              </button>
+        
+         </div>
+        </div>
+      </div>`;
+
+    document.body.insertAdjacentHTML("beforeend", modalHTML);
+
+    // Actualizar el contenido del modal con los datos actuales del carrito
+    actualizarCarritoModal();
+
+    // Agregar funcionalidad para cerrar el modal
+    document.querySelector(".cerrar-modal").addEventListener("click", () => {
+      document.querySelector(".modal-overlay").remove();
+    });
+
+    // Cerrar modal al hacer clic en el overlay
+    document.querySelector(".modal-overlay").addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal-overlay")) {
+        document.querySelector(".modal-overlay").remove();
+      }
+    });
+  });
+}
+
+// Función para actualizar el carrito en el modal
+function actualizarCarritoModal() {
+  const elementosCarritoModal = document.querySelector(
+    ".elementos-carrito-modal"
+  );
+  const cantidadCarritoModal = document.querySelector(
+    ".cantidad-carrito-modal"
+  );
+  const totalCarritoModal = document.querySelector(".total-carrito-modal");
+
+  if (!elementosCarritoModal) return;
+
+  elementosCarritoModal.innerHTML = "";
+  let total = 0;
+  let cantidad = 0;
+
+  for (const nombre in carrito) {
+    const item = carrito[nombre];
+    total += item.precio * item.cantidad;
+    cantidad += item.cantidad;
+
+    elementosCarritoModal.innerHTML += `
+      <div class="flex justify-between items-center py-2 border-b text-sm">
+        <div>
+          <p class="font-medium">${nombre}</p>
+          <p class="text-gray-500">${item.cantidad}x <span class="mr-8">@${item.precio.toFixed(2)}</span></p>
+
+        </div>
+        <span class="font-bold">$${(item.precio * item.cantidad).toFixed(2)}</span>
+      </div>
+    `;
+  }
+
+  if (cantidad === 0) {
+    elementosCarritoModal.innerHTML =
+      '<p class="text-gray-500 text-sm text-center">No hay productos en el carrito</p>';
+  }
+
+  if (cantidadCarritoModal) cantidadCarritoModal.textContent = cantidad;
+  if (totalCarritoModal) totalCarritoModal.textContent = `$${total.toFixed(2)}`;
+}
+
+// Llamar a la función cuando el DOM esté cargado
+document.addEventListener("DOMContentLoaded", () => {
+  abrirModal();
+});
+
+// Si el DOM ya está cargado, ejecutar inmediatamente
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", abrirModal);
+} else {
+  abrirModal();
+}
+
