@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,39 +9,34 @@
       sizes="32x32"
       href="./assets/images/favicon-32x32.png"
     />
-    <title>Frontend Mentor | Product list with cart</title>
+    <title>Lista de Postres</title>
     <link rel="stylesheet" href="./output.css" />
     <script src="./cards.js" defer></script>
   </head>
   <body class="bg-[#fcf8f5] flex items-center justify-center min-h-screen">
-    <main
-      class="w-full max-w-7xl p-4 grid grid-cols-1 md:grid-cols-[1fr_320px] gap-8"
-    >
-      <!-- Product Cards -->
-      <div class="cards-container">
-        <h2 class="text-[#372824] font-bold text-3xl mb-6">Desserts</h2>
-        <div
-          id="cards"
-          class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
-        >
-          <!-- JS injects cards here -->
+
+    <main class="w-full max-w-7xl p-4 grid grid-cols-1 md:grid-cols-[1fr_320px] gap-8">
+      <div class="contenedor-tarjetas">
+        <h2 class="text-[#372824] font-bold text-3xl mb-6">Postres</h2>
+        <div id="tarjetas" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         </div>
       </div>
-
-      <!-- Cart Sidebar -->
-      <div class="cart-container w-full md:sticky md:top-8 self-start">
+      <div class="contenedor-carrito w-full md:sticky md:top-8 self-start">
         <div class="bg-white rounded-xl shadow-md p-6 w-full">
-          <h2 class="text-lg font-bold text-red-700 mb-4">Your Cart (0)</h2>
-          <div class="flex justify-center mb-4">
-            <img
-              src="assets/images/illustration-empty-cart.svg"
-              alt="Cart"
-              class="w-24 h-24 object-contain"
-            />
+          <h2 class="text-lg font-bold text-red-700 mb-4">
+            Tu carrito (<span class="cantidad-carrito">0</span>)
+          </h2>
+          <div class="elementos-carrito">
+            <p class="text-gray-500 text-sm text-center">Agregar productos</p>
           </div>
-          <p class="text-gray-500 text-sm text-center">
-            Your added items will appear here
+          <p class="text-gray-700 font-bold text-right mt-4">
+            Total: $<span class="total-carrito">0.00</span>
           </p>
+          <button
+            class="bg-[#ea6950] text-white w-full mt-4 py-2 rounded-md hover:bg-[#d85a3f] transition"
+          >
+            Confirmar Pedido
+          </button>
         </div>
       </div>
     </main>
