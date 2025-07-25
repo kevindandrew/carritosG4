@@ -18,8 +18,37 @@
   <body class="bg-[#fcf8f5] flex items-center justify-center flex-col">
     <main>
       <div class="cards-container">
-        <h2 class="text-[#372824] font-bold text-3xl">Desserts</h2>
-        <div id="cards" class="cards-main"></div>
+        <h2>Desserts</h2>
+        <div class="cards-main">
+          <div
+            class="w-60 rounded-xl bg-[#fef8f5] shadow-md p-3 font-sans lg:hover:shadow-lg transition"
+          >
+            <div class="rounded-xl overflow-hidden">
+              <img
+                src="./assets/images/image-waffle-desktop.jpg"
+                alt="Waffle with Berries"
+                class="w-full h-auto"
+              />
+            </div>
+            <div class="-mt-5 flex justify-center z-10">
+              <button
+                class="bg-white text-[#ec6d47] border border-[#ec6d47] px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-[#fff2ee] transition flex items-center gap-2 shadow-md"
+              >
+                <img
+                  src="./assets/images/icon-add-to-cart.svg"
+                  alt="cart icon"
+                  class="h-4 w-4"
+                />
+                Añadir al Carrito
+              </button>
+            </div>
+            <p class="mt-4 text-xs text-gray-500">Waffle</p>
+            <p class="text-sm font-semibold text-gray-800">
+              Waffle with Berries
+            </p>
+            <p class="text-[15px] font-bold text-[#ea6950]">$6.50</p>
+          </div>
+        </div>
       </div>
       <div class="cart-container">carrito</div>
     </main>
